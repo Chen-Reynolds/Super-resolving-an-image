@@ -122,20 +122,55 @@ They also mention common synthetic settings like BI/BD/DN.
   - Are perceptual methods judged only by PSNR/SSIM (may be misleading)?
 
 ## 6. What I learned (transferable)
-- **Concepts/definitions** I will reuse:
-- **A good figure/table** worth replicating:
-- **A benchmark/protocol** I should adopt:
+- **Concepts/definitions I will reuse**
+  - A clear SISR setup: LR image in, SR image out, often described with a degradation process (blur + downsampling + noise).
+  - The difference between **simulated SR** (synthetic degradations, easier paired data) and **real-world SR** (unknown degradations, harder data).
+  - A simple SR checklist: data/degradation, upsampling, network design, loss/objective, evaluation metrics, efficiency, and generalisation.
+
+- **A good figure/table worth replicating**
+  - The high-level taxonomy diagram that summarises the field (simulated / real-world / domain-specific) and shows major branches.
+  - The dataset summary table (a compact list of commonly used SR datasets).
+
+- **A benchmark/protocol I should adopt (tentative)**
+  - Start from a standard benchmark setting first (common datasets + common scales), then move to real-world settings if needed.
+  - Report PSNR/SSIM for distortion-based evaluation, and also include visual examples (and a perceptual metric if the goal is visual quality).
+  - Always state degradation settings and evaluation details so comparisons are fair.
+
 
 ## 7. Limitations & gaps (作者写的 + 你补的)
-- **Stated limitations**:
-- **Unstated limitations** (my analysis):
-- **Open problems** (rank top 3 by importance for *my* project):
+- **Stated limitations**
+  - Real-world degradations are complex and hard to model, so methods trained on synthetic data may not work well on real images.
+  - There is a trade-off between high PSNR/SSIM and good-looking textures.
+  - Efficient SR for mobile/edge devices is still challenging due to speed and memory limits.
+
+- **Unstated limitations (my analysis)**
+  - The taxonomy is helpful, but categories can overlap (one method may fit multiple buckets).
+  - Some parts may read like a long list of methods, with limited direct evidence for “what works best”.
+  - “Real-world SR” is broad; different degradations (blur/noise/compression) may need more fine-grained grouping.
+
+- **Open problems (top 3 for my project: super-resolving one image)**
+  1. **Generalisation to real images**: how to handle unknown and mixed degradations without large performance drop.
+  2. **Evaluation**: how to judge SR fairly when PSNR/SSIM do not match human perception.
+  3. **Quality vs efficiency**: how to get strong SR quality with reasonable compute (fast inference, low memory).
+
+
 
 ## 8. How this changes my dissertation direction
-- **Relevance** to my topic:
-- **What I will copy** (method/protocol/taxonomy):
-- **What I will avoid**:
-- **New questions** raised:
+- **Relevance to my topic**
+  - This survey gives me a clear map of the SR field and the main directions I could follow.
+
+- **What I will copy (method/protocol/taxonomy)**
+  - Use the simulated / real-world / domain-specific taxonomy as a starting structure for my literature review.
+  - Use the SR checklist (data, upsampling, loss, metrics, efficiency, robustness) to read future papers consistently.
+
+- **What I will avoid**
+  - I will avoid mixing results from different papers without checking whether the evaluation setting is the same.
+  - I will not rely on PSNR/SSIM alone when the goal is visual quality.
+
+- **New questions raised**
+  - Should my project focus on benchmark accuracy, perceptual quality, or real-world robustness?
+  - What degradation setting and evaluation protocol should I choose so my results are meaningful and fair?
+  - What is the simplest baseline I can start with before trying more complex models?
 
 ## 9. Quote bank (optional, short)
 > 只摘关键短句，避免长段复制；标注页码。
